@@ -231,6 +231,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `gpioLEDBlink` — GPIO blinky
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
+   - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
    - `uartEcho` — UART interrupt echo
    - `enetEcho` — Ethernet L2 echo
    - `enetLwip` — LwIP TCP/IP stack with HTTP server
@@ -311,6 +312,7 @@ C:\ti\
 ├── enetLwip\
 ├── gpioLEDBlink\
 ├── hsMmcSdRw\
+├── irqPreemption\
 ├── rtcClock\
 ├── uartEcho\
 └── wdtReset\

@@ -89,6 +89,10 @@ Quick summary:
 - [**`dmtimerCounter/`**](./dmtimerCounter/) — Configures a DMTimer in free-running counter mode and prints the tick value over UART. Demonstrates clock-source selection, prescaler setup, and reading the counter without interrupt overhead.
 - [**`wdtReset/`**](./wdtReset/) — Enables the Watchdog Timer and intentionally lets it expire to force a system reset. Verifies that WDT servicing is required and provides a starting point for any application that needs a safety supervisor.
 
+### Interrupt Handling
+
+- [**`irqPreemption/`**](./irqPreemption/) — Test of **nested / pre-empting interrupts** on the Cortex-A8 GIC. Two or more interrupt sources of different priorities are wired so that a higher-priority IRQ is allowed to preempt a lower-priority one mid-handler, exercising the ARM Generic Interrupt Controller's preemption model. Indispensable for anyone writing real-time code on AM3352 — proves your ISR priorities and nesting rules are wired up correctly.
+
 ### Communication
 
 - [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
@@ -118,6 +122,7 @@ Quick summary:
 | `gpioLEDBlink` | ✅ Stable | — |
 | `dmtimerCounter` | ✅ Stable | — |
 | `wdtReset` | ✅ Stable | — |
+| `irqPreemption` | ✅ Stable | — |
 | `uartEcho` | ✅ Stable | — |
 | `enetEcho` | ✅ Stable | — |
 | `enetLwip` | ✅ Stable | — |
@@ -165,6 +170,7 @@ Workspace_12/
 ├── edmaTest/                  ← CCS project: edmaTest
 ├── gpioLEDBlink/              ← CCS project: gpioLEDBlink
 ├── hsMmcSdRw/                 ← CCS project: hsMmcSdRw
+├── irqPreemption/             ← CCS project: irqPreemption
 ├── rtcClock/                  ← CCS project: rtcClock (WIP)
 ├── uartEcho/                  ← CCS project: uartEcho
 └── wdtReset/                  ← CCS project: wdtReset

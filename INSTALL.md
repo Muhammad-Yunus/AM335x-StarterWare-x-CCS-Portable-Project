@@ -242,6 +242,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `AM3352_GPIO_LED_TIMER` — blinky with polled DMTimer7 *(custom-built, StarterWare ref)*
    - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation *(custom-built, StarterWare ref)*
    - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline *(custom-built, StarterWare ref)*
+   - `AM3352_I2C_SCANNER` — I2C1 bus scanner on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz, prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0 ⚠️ needs 10 kΩ external pull-ups *(custom-built, StarterWare ref)*
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
@@ -326,6 +327,7 @@ C:\ti\
     ├── AM3352_GPIO_LED_DELAY\
     ├── AM3352_GPIO_LED_SEQUENCE\
     ├── AM3352_GPIO_INTERRUPT\
+    ├── AM3352_I2C_SCANNER\
     ├── AM3352_GPIO_LED_TIMER\
     ├── boot\
     ├── demo\

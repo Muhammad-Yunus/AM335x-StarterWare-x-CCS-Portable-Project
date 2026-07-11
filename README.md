@@ -108,6 +108,7 @@ Quick summary:
 
 ### Communication
 
+- 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz. Probes addresses 0x03–0x77 and prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0. Polled only, no ISR-driven I2C. _Built from an empty CCS project; references StarterWare libraries. ⚠️ Needs 10 kΩ external pull-ups on SCL/SDA — StarterWare's `I2CPinMuxSetup(1)` does not enable internal pull-ups._
 - 🟦 [**`Examples/uartEcho/`**](./Examples/uartEcho/) — UART interrupt-driven echo. Pin-mux + FIFO + ISR skeleton for serial protocols.
 - 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU. UART-triggered events, PaRAM linking, CPU stays out of the byte loop.
 - 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`). The DM​A/cache pitfall reference.
@@ -140,6 +141,7 @@ Quick summary:
 | `AM3352_GPIO_LED_TIMER` | ✅ Stable | — |
 | `AM3352_GPIO_LED_SEQUENCE` | ✅ Stable | — |
 | `AM3352_GPIO_INTERRUPT` | ✅ Stable | GPIO input interrupt on P9_12 + UART0 echo |
+| `AM3352_I2C_SCANNER` | ✅ Stable | I2C1 bus scanner (P9_17/P9_18) @ 100 kHz, output grid `i2cdetect`-style |
 | `dmtimerCounter` | ✅ Stable | — |
 | `wdtReset` | ✅ Stable | — |
 | `irqPreemption` | ✅ Stable | — |
@@ -192,6 +194,7 @@ Workspace_12/
     ├── AM3352_GPIO_LED_DELAY/        ← blinky + IRQ-based delay()
     ├── AM3352_GPIO_LED_SEQUENCE/     ← 4-LED running-light animation
     ├── AM3352_GPIO_INTERRUPT/        ← GPIO input interrupt (P9_12) + UART0 echo
+    ├── AM3352_I2C_SCANNER/           ← I2C1 bus scanner (P9_17/P9_18)
     ├── AM3352_GPIO_LED_TIMER/        ← blinky + polled DMTimer7 delay
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase

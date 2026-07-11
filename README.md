@@ -91,6 +91,7 @@ Quick summary:
 - 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7. Adds `IntAINTCInit()` + `IntMasterIRQEnable()` to the startup path. _Built from an empty CCS project; references StarterWare libraries._
 - 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ). Same loop, different tick source — isolates GPIO from interrupt wiring. _Built from an empty CCS project; references StarterWare libraries._
 - 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]). Step rate controlled by `STEP_PERIOD_MS`. _Built from an empty CCS project; references StarterWare libraries._
+- 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce. ISR sets a flag; main loop prints `"GPIO60 interrupt N"` on UART0. Boot path also includes a UART0 echo baseline (115200 8N1) for SoC bring-up. _Built from an empty CCS project; references StarterWare libraries._
 
 ### Timers
 
@@ -138,6 +139,7 @@ Quick summary:
 | `AM3352_GPIO_LED_DELAY` | ✅ Stable | — |
 | `AM3352_GPIO_LED_TIMER` | ✅ Stable | — |
 | `AM3352_GPIO_LED_SEQUENCE` | ✅ Stable | — |
+| `AM3352_GPIO_INTERRUPT` | ✅ Stable | GPIO input interrupt on P9_12 + UART0 echo |
 | `dmtimerCounter` | ✅ Stable | — |
 | `wdtReset` | ✅ Stable | — |
 | `irqPreemption` | ✅ Stable | — |
@@ -189,6 +191,7 @@ Workspace_12/
     ├── AM3352_GPIO_LED/              ← minimal busy-wait blinky
     ├── AM3352_GPIO_LED_DELAY/        ← blinky + IRQ-based delay()
     ├── AM3352_GPIO_LED_SEQUENCE/     ← 4-LED running-light animation
+    ├── AM3352_GPIO_INTERRUPT/        ← GPIO input interrupt (P9_12) + UART0 echo
     ├── AM3352_GPIO_LED_TIMER/        ← blinky + polled DMTimer7 delay
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase

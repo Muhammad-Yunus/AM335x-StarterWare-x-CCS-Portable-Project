@@ -241,6 +241,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `AM3352_GPIO_LED_DELAY` — blinky with IRQ-based `delay()` *(custom-built, StarterWare ref)*
    - `AM3352_GPIO_LED_TIMER` — blinky with polled DMTimer7 *(custom-built, StarterWare ref)*
    - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation *(custom-built, StarterWare ref)*
+   - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline *(custom-built, StarterWare ref)*
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
@@ -324,6 +325,7 @@ C:\ti\
     ├── AM3352_GPIO_LED\
     ├── AM3352_GPIO_LED_DELAY\
     ├── AM3352_GPIO_LED_SEQUENCE\
+    ├── AM3352_GPIO_INTERRUPT\
     ├── AM3352_GPIO_LED_TIMER\
     ├── boot\
     ├── demo\

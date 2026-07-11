@@ -1,0 +1,148 @@
+# ============================================================
+# .gitignore for AM335x StarterWare x CCS Portable Project
+# Target: Code Composer Studio v6+ on the Antminer L3+ (AM3352)
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. Eclipse / CCS workspace metadata
+# ------------------------------------------------------------
+# Per-user workspace state. NEVER commit this — every dev has
+# their own path/layout in here. Cloning a fresh repo and
+# letting CCS regenerate these is the whole point.
+.metadata/
+RemoteSystemsTempFiles/
+.cproject_overrides/
+
+# Eclipse lock files (created when the workspace is open)
+.metadata/.lock
+
+# Per-project Eclipse backup folders that CCS generates when
+# you change build configurations or import a project again.
+# Format seen in this workspace:
+#   <project>/.bak-YYYYMMDD-HHMMSS/
+*/.bak-*/
+*/.bak-*/*
+
+# Eclipse resource-local history
+.metadata/.plugins/org.eclipse.core.resources/.history/
+
+# DVT / EnergyTrace / analyser caches
+.metadata/.plugins/com.ti.dvt.*/
+
+# Terminal view per-user data
+.metadata/.plugins/org.eclipse.tm.terminal.view.ui/
+
+# CDT / RSE user settings
+.metadata/.plugins/org.eclipse.cdt.ui/dialog_settings.xml
+.metadata/.plugins/org.eclipse.rse.*/dialog_settings.xml
+.metadata/.plugins/org.eclipse.ltk.ui.refactoring/dialog_settings.xml
+.metadata/.plugins/org.eclipse.ui.*/dialog_settings.xml
+.metadata/.plugins/org.eclipse.debug.ui/dialog_settings.xml
+
+# ------------------------------------------------------------
+# 2. CCS build outputs — these regenerate cleanly from
+#    sources + the StarterWare library path
+# ------------------------------------------------------------
+# Default CCS configurations
+**/Debug/
+**/Release/
+
+# Custom configurations (this workspace has boot/Debug_MMCSD)
+**/Debug_MMCSD/
+**/*_MMCSD/
+
+# Generic catch-all for any other config-name that may appear
+# (Profile, Flash, ROM, ...)
+**/[A-Za-z]*_Build/
+
+# Individual generated artefacts — kept here in case someone
+# later runs `git add` on a specific file inside a build dir
+*.obj
+*.o
+*.a
+*.out
+*.map
+*.lst
+*.crf
+*.htm
+*.xml.lst
+*.bin
+*.hex
+*.elf
+*.dis
+*.sym
+*.exp
+*.lib
+*.d
+*.pp
+*.oe
+*.makefile
+
+# CCS-generated intermediate makefiles
+*.mk
+objects.mk
+sources.mk
+subdir_vars.mk
+subdir_rules.mk
+ccsObjs.opt
+makefile
+*.dep
+
+# Linker / loader logs
+*.xls
+*.xout
+boot_linkInfo.xml
+
+# ------------------------------------------------------------
+# 3. CCS-generated debug helper files
+# ------------------------------------------------------------
+# These are auto-recreated when you start a debug session
+# and contain absolute paths specific to your machine.
+*.launch.bak
+.ccsproject_cache/
+.csettings/
+
+# ------------------------------------------------------------
+# 4. Per-machine / per-user stuff that has no business in git
+# ------------------------------------------------------------
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE swap/temp files
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local-only notes / scratch files — these belong in your own
+# machine, not the repo
+*.log
+*.tmp
+*.bak
+!*.launch   # but keep CCS launch configs (see below)
+
+# ------------------------------------------------------------
+# 5. Files that MUST stay tracked (negative patterns)
+# ------------------------------------------------------------
+# Even though we ignore */Debug/, the build-spec files
+# describing those configs are part of the project and MUST
+# be committed.
+!.project
+!.cproject
+!.ccsproject
+!.ccsproject.bak
+!.launches/
+!.launches/*.launch
+!.settings/
+
+# Keep the source tree and linkerscripts for every project
+!*.c
+!*.h
+!*.asm
+!*.cmd
+!*.lds
+!*.s

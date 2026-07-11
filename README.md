@@ -56,11 +56,18 @@ This makes the projects:
 
 ## Getting Started
 
-1. Install **AM335x StarterWare 02.00.01.01** into `C:\ti\AM335X_StarterWare_02_00_01_01`.
-2. Open Code Composer Studio and select this workspace (`Workspace_12`).
-3. **File → Import → Existing CCS Projects** → browse to this folder.
-4. Pick the demos you want from the list and click **Finish**.
-5. Build, launch a debug session, and run on the target.
+Looking for the full step-by-step setup (download CCS, install StarterWare, import driver projects, build libraries, then import the portable samples)?
+
+👉 **See [`INSTALL.md`](./INSTALL.md)** for the complete installation guide.
+
+Quick summary:
+
+1. Install **Code Composer Studio v12.8.1** into `C:\ti\ccs1281` with **Sitara AM3x ARM Processors** support.
+2. Install **AM335x StarterWare 02.00.01.01** into `C:\ti\AM335X_StarterWare_02_00_01_01`.
+3. In CCS, **Project → Import CCS Projects...** → point at the StarterWare root → tick **only `drivers`, `mmcsdlib`, `platform`, `system`, `utils`** → build all five (this produces the `.lib` files).
+4. Delete those five projects from the Project Explorer **without** ticking "Delete project contents on disk" — the libraries stay on disk but disappear from the CCS view.
+5. **Project → Import CCS Projects...** → point at this workspace → tick the portable demos you want.
+6. Build, launch a debug session, and run on the Antminer L3+.
 
 ---
 

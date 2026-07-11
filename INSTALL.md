@@ -226,11 +226,21 @@ Now import the **portable demo projects** shipped in this repository.
 
    > 💡 You can also point at the workspace root — CCS will recurse and pick up everything under `Examples/`. Pointing directly at `Examples/` is faster and avoids any future folders (e.g. tooling, scripts) that you might add at the workspace root.
 
-3. CCS will scan the folder and list all the projects under `Examples/`. Tick the ones you want to play with:
+3. CCS will scan the folder and list all the projects under `Examples/`. Tick the ones you want to play with.
+
+   **Legend:**
+   - *no suffix* — ported directly from the StarterWare `examples/<board>/` source. Application code is still the TI reference implementation, only the project structure was made portable.
+   - `*(custom-built, StarterWare ref)*` — built from an **empty CCS project**. The application source is hand-written, but it still links against `drivers.lib` / `platform.lib` / `system.lib` / `utils.lib` from `C:\ti\AM335X_StarterWare_02_00_01_01` for the hardware drivers.
+
+   **Projects:**
 
    - `boot` — secondary bootloader (loads `app` from MMC/SD or XMODEM)
    - `demo` — multi-driver showcase
-   - `gpioLEDBlink` — GPIO blinky
+   - `gpioLEDBlink` — GPIO blinky *(StarterWare reference)*
+   - `AM3352_GPIO_LED` — minimal busy-wait blinky *(custom-built from empty CCS project, references StarterWare libraries)*
+   - `AM3352_GPIO_LED_DELAY` — blinky with IRQ-based `delay()` *(custom-built, StarterWare ref)*
+   - `AM3352_GPIO_LED_TIMER` — blinky with polled DMTimer7 *(custom-built, StarterWare ref)*
+   - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation *(custom-built, StarterWare ref)*
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
@@ -311,6 +321,10 @@ C:\ti\
 ├── Doc\
 │   └── bg.png                                  ← banner image
 └── Examples\                                   ← portable CCS projects
+    ├── AM3352_GPIO_LED\
+    ├── AM3352_GPIO_LED_DELAY\
+    ├── AM3352_GPIO_LED_SEQUENCE\
+    ├── AM3352_GPIO_LED_TIMER\
     ├── boot\
     ├── demo\
     ├── dmtimerCounter\

@@ -100,6 +100,7 @@ Quick summary:
 ### Communication
 
 - [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
+- [**`uartEcho_edma/`**](./uartEcho_edma/) — Same UART echo use-case as `uartEcho`, but with the **EDMA3 controller** moving bytes between the UART FIFO and RAM buffers instead of CPU-driven interrupt service. Demonstrates UART-triggered EDMA events, PaRAM linking for continuous RX, and how to keep the CPU out of the byte-pump loop on high-throughput serial links.
 - [**`enetEcho/`**](./enetEcho/) — CPSW Ethernet echo using the StarterWare EMAC/GMII driver stack. Incoming Ethernet frames are looped back out the same interface — a great baseline for any L2 switch or TCP/IP offload project on AM335x.
 - [**`enetLwip/`**](./enetLwip/) — Full **LwIP** (lightweight IP) TCP/IP stack demo running on top of the StarterWare EMAC driver. Comes with a minimal **HTTP server** (`httpd.c`) so the Antminer L3+ can serve a real webpage over Ethernet. Tweakable via `lwipopts.h`. Demonstrates network bring-up, DHCP/static IP, socket-style LwIP APIs, and how to host a web UI on a bare-metal Cortex-A8 with zero RTOS.
 
@@ -128,6 +129,7 @@ Quick summary:
 | `wdtReset` | ✅ Stable | — |
 | `irqPreemption` | ✅ Stable | — |
 | `uartEcho` | ✅ Stable | — |
+| `uartEcho_edma` | ✅ Stable | — |
 | `enetEcho` | ✅ Stable | — |
 | `enetLwip` | ✅ Stable | — |
 | `edmaTest` | ✅ Stable | — |
@@ -179,6 +181,7 @@ Workspace_12/
 ├── neonVFPBenchmark/          ← CCS project: neonVFPBenchmark
 ├── rtcClock/                  ← CCS project: rtcClock (WIP)
 ├── uartEcho/                  ← CCS project: uartEcho
+├── uartEcho_edma/             ← CCS project: uartEcho_edma
 └── wdtReset/                  ← CCS project: wdtReset
 ```
 

@@ -87,6 +87,10 @@ This makes the projects:
 - [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
 - [**`enetEcho/`**](./enetEcho/) — CPSW Ethernet echo using the StarterWare EMAC/GMII driver stack. Incoming Ethernet frames are looped back out the same interface — a great baseline for any L2 switch or TCP/IP offload project on AM335x.
 
+### Memory & DMA
+
+- [**`edmaTest/`**](./edmaTest/) — Enhanced DMA (EDMA3) controller demo that configures a transfer channel and a param set, kicks off a memory-to-memory copy, and verifies that the destination buffer matches the source. Demonstrates region/instance setup, PaRAM entry programming, event triggering, transfer-completion polling and the EDMA interrupt hook. Essential reference for offloading bulk data movement away from the Cortex-A8 core.
+
 ### Storage
 
 - [**`hsMmcSdRw/`**](./hsMmcSdRw/) — High-speed MMC/SD read/write demo that initializes an SD card via the MMCSD controller, performs block-level reads and writes, and verifies the round-trip. Use it to validate SD-card bring-up and the 8-bit MMCSD data path.
@@ -108,6 +112,7 @@ This makes the projects:
 | `wdtReset` | ✅ Stable | — |
 | `uartEcho` | ✅ Stable | — |
 | `enetEcho` | ✅ Stable | — |
+| `edmaTest` | ✅ Stable | — |
 | `hsMmcSdRw` | ✅ Stable | — |
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
 
@@ -147,6 +152,7 @@ Workspace_12/
 ├── demo/                      ← CCS project: demo
 ├── dmtimerCounter/            ← CCS project: dmtimerCounter
 ├── enetEcho/                  ← CCS project: enetEcho
+├── edmaTest/                  ← CCS project: edmaTest
 ├── gpioLEDBlink/              ← CCS project: gpioLEDBlink
 ├── hsMmcSdRw/                 ← CCS project: hsMmcSdRw
 ├── rtcClock/                  ← CCS project: rtcClock (WIP)

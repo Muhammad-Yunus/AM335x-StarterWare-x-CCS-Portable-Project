@@ -317,7 +317,7 @@ int main(void)
     /* Print an 8-row grid (0x00..0x70) in i2cdetect -y 1 format.
     ** `--` = no ACK, `XX` = slave present. The last row (0x70..) stops
     ** at 0x77 since 7-bit addresses live in 0x00..0x77. */
-    ConsoleUtilsPrintf("       0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f\r\n");
+    ConsoleUtilsPrintf("      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f\r\n");
     {
         unsigned int row;
         for(row = 0; row < 8; row++)
@@ -345,7 +345,7 @@ int main(void)
                 {
                     ConsoleUtilsPrintf(" --");
                 }
-                if(col < 15) ConsoleUtilsPrintf(" ");
+                if(col < 15) ConsoleUtilsPrintf("");
             }
             ConsoleUtilsPrintf("\r\n");
         }

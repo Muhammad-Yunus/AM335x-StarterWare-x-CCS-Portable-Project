@@ -42,10 +42,10 @@ This makes the projects:
 
 | Component | Version / Detail |
 |---|---|
-| Code Composer Studio | v6.x or newer with ARM compiler support |
-| StarterWare Package | `AM335X_StarterWare_02_00_01_01` installed at `C:\ti\` |
+| Code Composer Studio | **[v12.8.1](https://www.ti.com/tool/download/CCSTUDIO/12.8.1)** — must include **Sitara AM3x ARM Processors** component |
+| StarterWare Package | **version 02.00.01.01** — install **`AM335X_StarterWare_02_00_01_01`** at `C:\ti\` |
 | Target Board | **Antminer L3+** (TI AM3352, Cortex-A8) — repurposed mining hardware |
-| Emulator / Debugger | XDS100v2, XDS200, or equivalent (for flash/debug) |
+| Emulator / Debugger | **J-Link** (tested & confirmed working) — solder a JTAG cable onto the Antminer L3+ board first. Follow the [BeagleBone Black JTAG connector soldering tutorial](https://dr-kino.github.io/2020/07/22/Beaglebone-black-soldering-jyag-connector/) (the JTAG footprint on the Antminer L3+ is in the same rear-edge position). XDS100v2 / XDS200 will also work if you prefer TI emulators. |
 
 > The StarterWare driver libraries and include paths are pulled from:
 > `C:\ti\AM335X_StarterWare_02_00_01_01`

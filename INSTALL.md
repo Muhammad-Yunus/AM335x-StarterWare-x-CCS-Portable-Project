@@ -235,6 +235,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `neonVFPBenchmark` — NEON SIMD + VFPv3 floating-point benchmark
    - `uartEcho` — UART interrupt echo
    - `uartEcho_edma` — UART echo with EDMA-driven TX/RX
+   - `uartEdma_Cache` — UART + EDMA + L1/L2 cache coherency combo
    - `enetEcho` — Ethernet L2 echo
    - `enetLwip` — LwIP TCP/IP stack with HTTP server
    - `edmaTest` — EDMA3 memory-to-memory copy
@@ -319,6 +320,7 @@ C:\ti\
 ├── rtcClock\
 ├── uartEcho\
 ├── uartEcho_edma\
+├── uartEdma_Cache\
 └── wdtReset\
 ```
 

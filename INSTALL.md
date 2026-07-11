@@ -232,6 +232,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
+   - `neonVFPBenchmark` — NEON SIMD + VFPv3 floating-point benchmark
    - `uartEcho` — UART interrupt echo
    - `enetEcho` — Ethernet L2 echo
    - `enetLwip` — LwIP TCP/IP stack with HTTP server
@@ -313,6 +314,7 @@ C:\ti\
 ├── gpioLEDBlink\
 ├── hsMmcSdRw\
 ├── irqPreemption\
+├── neonVFPBenchmark\
 ├── rtcClock\
 ├── uartEcho\
 └── wdtReset\

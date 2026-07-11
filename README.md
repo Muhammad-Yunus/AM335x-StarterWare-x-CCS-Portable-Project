@@ -93,6 +93,10 @@ Quick summary:
 
 - [**`irqPreemption/`**](./irqPreemption/) — Test of **nested / pre-empting interrupts** on the Cortex-A8 GIC. Two or more interrupt sources of different priorities are wired so that a higher-priority IRQ is allowed to preempt a lower-priority one mid-handler, exercising the ARM Generic Interrupt Controller's preemption model. Indispensable for anyone writing real-time code on AM3352 — proves your ISR priorities and nesting rules are wired up correctly.
 
+### Performance / SIMD
+
+- [**`neonVFPBenchmark/`**](./neonVFPBenchmark/) — Benchmark of the Cortex-A8 **NEON SIMD** and **VFPv3 floating-point** units. Runs a series of fixed-point and floating-point workloads (vector add/mul, dot product, FFT-style loops, scalar-vs-vector comparisons) and prints cycle counts over UART. Use it to quantify how much speedup you get from compiling with NEON intrinsics vs. plain C, and to verify the VFP/NEON pipeline is healthy on a particular Antminer L3+ board.
+
 ### Communication
 
 - [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
@@ -127,6 +131,7 @@ Quick summary:
 | `enetEcho` | ✅ Stable | — |
 | `enetLwip` | ✅ Stable | — |
 | `edmaTest` | ✅ Stable | — |
+| `neonVFPBenchmark` | ✅ Stable | — |
 | `hsMmcSdRw` | ✅ Stable | — |
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
 
@@ -171,6 +176,7 @@ Workspace_12/
 ├── gpioLEDBlink/              ← CCS project: gpioLEDBlink
 ├── hsMmcSdRw/                 ← CCS project: hsMmcSdRw
 ├── irqPreemption/             ← CCS project: irqPreemption
+├── neonVFPBenchmark/          ← CCS project: neonVFPBenchmark
 ├── rtcClock/                  ← CCS project: rtcClock (WIP)
 ├── uartEcho/                  ← CCS project: uartEcho
 └── wdtReset/                  ← CCS project: wdtReset

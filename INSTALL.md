@@ -233,6 +233,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `wdtReset` — watchdog timer reset demo
    - `uartEcho` — UART interrupt echo
    - `enetEcho` — Ethernet L2 echo
+   - `enetLwip` — LwIP TCP/IP stack with HTTP server
    - `edmaTest` — EDMA3 memory-to-memory copy
    - `hsMmcSdRw` — MMC/SD block read/write
    - `rtcClock` — RTC demo (🚧 WIP — currently being ported)
@@ -307,6 +308,7 @@ C:\ti\
 ├── dmtimerCounter\
 ├── edmaTest\
 ├── enetEcho\
+├── enetLwip\
 ├── gpioLEDBlink\
 ├── hsMmcSdRw\
 ├── rtcClock\

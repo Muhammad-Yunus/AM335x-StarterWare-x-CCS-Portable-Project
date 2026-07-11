@@ -93,6 +93,7 @@ Quick summary:
 
 - [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
 - [**`enetEcho/`**](./enetEcho/) — CPSW Ethernet echo using the StarterWare EMAC/GMII driver stack. Incoming Ethernet frames are looped back out the same interface — a great baseline for any L2 switch or TCP/IP offload project on AM335x.
+- [**`enetLwip/`**](./enetLwip/) — Full **LwIP** (lightweight IP) TCP/IP stack demo running on top of the StarterWare EMAC driver. Comes with a minimal **HTTP server** (`httpd.c`) so the Antminer L3+ can serve a real webpage over Ethernet. Tweakable via `lwipopts.h`. Demonstrates network bring-up, DHCP/static IP, socket-style LwIP APIs, and how to host a web UI on a bare-metal Cortex-A8 with zero RTOS.
 
 ### Memory & DMA
 
@@ -119,6 +120,7 @@ Quick summary:
 | `wdtReset` | ✅ Stable | — |
 | `uartEcho` | ✅ Stable | — |
 | `enetEcho` | ✅ Stable | — |
+| `enetLwip` | ✅ Stable | — |
 | `edmaTest` | ✅ Stable | — |
 | `hsMmcSdRw` | ✅ Stable | — |
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
@@ -159,6 +161,7 @@ Workspace_12/
 ├── demo/                      ← CCS project: demo
 ├── dmtimerCounter/            ← CCS project: dmtimerCounter
 ├── enetEcho/                  ← CCS project: enetEcho
+├── enetLwip/                  ← CCS project: enetLwip
 ├── edmaTest/                  ← CCS project: edmaTest
 ├── gpioLEDBlink/              ← CCS project: gpioLEDBlink
 ├── hsMmcSdRw/                 ← CCS project: hsMmcSdRw

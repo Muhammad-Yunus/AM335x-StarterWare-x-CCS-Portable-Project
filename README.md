@@ -66,56 +66,56 @@ Quick summary:
 2. Install **AM335x StarterWare 02.00.01.01** into `C:\ti\AM335X_StarterWare_02_00_01_01`.
 3. In CCS, **Project → Import CCS Projects...** → point at the StarterWare root → tick **only `drivers`, `mmcsdlib`, `platform`, `system`, `utils`** → build all five (this produces the `.lib` files).
 4. Delete those five projects from the Project Explorer **without** ticking "Delete project contents on disk" — the libraries stay on disk but disappear from the CCS view.
-5. **Project → Import CCS Projects...** → point at this workspace → tick the portable demos you want.
+5. **Project → Import CCS Projects...** → point at the `Examples/` folder inside this workspace → tick the portable demos you want.
 6. Build, launch a debug session, and run on the Antminer L3+.
 
 ---
 
 ## Project Index
 
-> Each project below lives in its own folder inside this workspace. Click the project name to jump straight to the folder.
+> Each project below lives in its own folder under [`Examples/`](./Examples/) inside this workspace. Click the project name to jump straight to the folder.
 
 ### Core / Boot
 
-- [**`boot/`**](./boot/) — Secondary bootloader (BL) that brings the AM3352 out of reset, configures the clock tree, PLLs and DDR, then loads the application image either from the **MMC/SD card** (FAT filesystem via the bundled `fat_mmcsd.c` + `ff.c`) or via **XMODEM over UART** as a fallback. Includes pin-mux setup, MMU/cache bring-up (`mmu.c`, `cache.c`, `cp15.asm`), CRC16 verification and the platform init glue (`bl_platform.c`, `board.c`, `device.c`). The canonical "hello world" of StarterWare — start here if you need a known-good baseline for custom boot flows on the Antminer L3+.
-- [**`demo/`**](./demo/) — All-in-one showcase that exercises multiple StarterWare drivers (GPIO, UART, timers, etc.) from a single binary. Useful as a sanity check that your toolchain, libraries, and target are wired up correctly.
+- [**`Examples/boot/`**](./Examples/boot/) — Secondary bootloader (BL) that brings the AM3352 out of reset, configures the clock tree, PLLs and DDR, then loads the application image either from the **MMC/SD card** (FAT filesystem via the bundled `fat_mmcsd.c` + `ff.c`) or via **XMODEM over UART** as a fallback. Includes pin-mux setup, MMU/cache bring-up (`mmu.c`, `cache.c`, `cp15.asm`), CRC16 verification and the platform init glue (`bl_platform.c`, `board.c`, `device.c`). The canonical "hello world" of StarterWare — start here if you need a known-good baseline for custom boot flows on the Antminer L3+.
+- [**`Examples/demo/`**](./Examples/demo/) — All-in-one showcase that exercises multiple StarterWare drivers (GPIO, UART, timers, etc.) from a single binary. Useful as a sanity check that your toolchain, libraries, and target are wired up correctly.
 
 ### GPIO
 
-- [**`gpioLEDBlink/`**](./gpioLEDBlink/) — Toggles a user LED via GPIO at a fixed interval. The classic blinky demo for verifying pin-mux and GPIO configuration on AM335x — minimal, rock-solid, and the recommended first test on a fresh board.
+- [**`Examples/gpioLEDBlink/`**](./Examples/gpioLEDBlink/) — Toggles a user LED via GPIO at a fixed interval. The classic blinky demo for verifying pin-mux and GPIO configuration on AM335x — minimal, rock-solid, and the recommended first test on a fresh board.
 
 ### Timers
 
-- [**`dmtimerCounter/`**](./dmtimerCounter/) — Configures a DMTimer in free-running counter mode and prints the tick value over UART. Demonstrates clock-source selection, prescaler setup, and reading the counter without interrupt overhead.
-- [**`wdtReset/`**](./wdtReset/) — Enables the Watchdog Timer and intentionally lets it expire to force a system reset. Verifies that WDT servicing is required and provides a starting point for any application that needs a safety supervisor.
+- [**`Examples/dmtimerCounter/`**](./Examples/dmtimerCounter/) — Configures a DMTimer in free-running counter mode and prints the tick value over UART. Demonstrates clock-source selection, prescaler setup, and reading the counter without interrupt overhead.
+- [**`Examples/wdtReset/`**](./Examples/wdtReset/) — Enables the Watchdog Timer and intentionally lets it expire to force a system reset. Verifies that WDT servicing is required and provides a starting point for any application that needs a safety supervisor.
 
 ### Interrupt Handling
 
-- [**`irqPreemption/`**](./irqPreemption/) — Test of **nested / pre-empting interrupts** on the Cortex-A8 GIC. Two or more interrupt sources of different priorities are wired so that a higher-priority IRQ is allowed to preempt a lower-priority one mid-handler, exercising the ARM Generic Interrupt Controller's preemption model. Indispensable for anyone writing real-time code on AM3352 — proves your ISR priorities and nesting rules are wired up correctly.
+- [**`Examples/irqPreemption/`**](./Examples/irqPreemption/) — Test of **nested / pre-empting interrupts** on the Cortex-A8 GIC. Two or more interrupt sources of different priorities are wired so that a higher-priority IRQ is allowed to preempt a lower-priority one mid-handler, exercising the ARM Generic Interrupt Controller's preemption model. Indispensable for anyone writing real-time code on AM3352 — proves your ISR priorities and nesting rules are wired up correctly.
 
 ### Performance / SIMD
 
-- [**`neonVFPBenchmark/`**](./neonVFPBenchmark/) — Benchmark of the Cortex-A8 **NEON SIMD** and **VFPv3 floating-point** units. Runs a series of fixed-point and floating-point workloads (vector add/mul, dot product, FFT-style loops, scalar-vs-vector comparisons) and prints cycle counts over UART. Use it to quantify how much speedup you get from compiling with NEON intrinsics vs. plain C, and to verify the VFP/NEON pipeline is healthy on a particular Antminer L3+ board.
+- [**`Examples/neonVFPBenchmark/`**](./Examples/neonVFPBenchmark/) — Benchmark of the Cortex-A8 **NEON SIMD** and **VFPv3 floating-point** units. Runs a series of fixed-point and floating-point workloads (vector add/mul, dot product, FFT-style loops, scalar-vs-vector comparisons) and prints cycle counts over UART. Use it to quantify how much speedup you get from compiling with NEON intrinsics vs. plain C, and to verify the VFP/NEON pipeline is healthy on a particular Antminer L3+ board.
 
 ### Communication
 
-- [**`uartEcho/`**](./uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
-- [**`uartEcho_edma/`**](./uartEcho_edma/) — Same UART echo use-case as `uartEcho`, but with the **EDMA3 controller** moving bytes between the UART FIFO and RAM buffers instead of CPU-driven interrupt service. Demonstrates UART-triggered EDMA events, PaRAM linking for continuous RX, and how to keep the CPU out of the byte-pump loop on high-throughput serial links.
-- [**`uartEdma_Cache/`**](./uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** combo. Echoes bytes through EDMA-managed buffers while exercising Cortex-A8 cache maintenance operations (`CacheDataClean` / `CacheDataInvalidate`) so the CPU sees the data the DMA just wrote, and the DMA sees the data the CPU just wrote. Critical reference for anyone shipping code that mixes DMA with the cache — without the right cache ops you get phantom bytes from RAM.
-- [**`enetEcho/`**](./enetEcho/) — CPSW Ethernet echo using the StarterWare EMAC/GMII driver stack. Incoming Ethernet frames are looped back out the same interface — a great baseline for any L2 switch or TCP/IP offload project on AM335x.
-- [**`enetLwip/`**](./enetLwip/) — Full **LwIP** (lightweight IP) TCP/IP stack demo running on top of the StarterWare EMAC driver. Comes with a minimal **HTTP server** (`httpd.c`) so the Antminer L3+ can serve a real webpage over Ethernet. Tweakable via `lwipopts.h`. Demonstrates network bring-up, DHCP/static IP, socket-style LwIP APIs, and how to host a web UI on a bare-metal Cortex-A8 with zero RTOS.
+- [**`Examples/uartEcho/`**](./Examples/uartEcho/) — UART interrupt-driven echo server. Every byte received on the console UART is echoed back to the sender. Demonstrates UART pin-mux, FIFO configuration, and the interrupt-handler skeleton for serial protocols.
+- [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — Same UART echo use-case as `uartEcho`, but with the **EDMA3 controller** moving bytes between the UART FIFO and RAM buffers instead of CPU-driven interrupt service. Demonstrates UART-triggered EDMA events, PaRAM linking for continuous RX, and how to keep the CPU out of the byte-pump loop on high-throughput serial links.
+- [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** combo. Echoes bytes through EDMA-managed buffers while exercising Cortex-A8 cache maintenance operations (`CacheDataClean` / `CacheDataInvalidate`) so the CPU sees the data the DMA just wrote, and the DMA sees the data the CPU just wrote. Critical reference for anyone shipping code that mixes DMA with the cache — without the right cache ops you get phantom bytes from RAM.
+- [**`Examples/enetEcho/`**](./Examples/enetEcho/) — CPSW Ethernet echo using the StarterWare EMAC/GMII driver stack. Incoming Ethernet frames are looped back out the same interface — a great baseline for any L2 switch or TCP/IP offload project on AM335x.
+- [**`Examples/enetLwip/`**](./Examples/enetLwip/) — Full **LwIP** (lightweight IP) TCP/IP stack demo running on top of the StarterWare EMAC driver. Comes with a minimal **HTTP server** (`httpd.c`) so the Antminer L3+ can serve a real webpage over Ethernet. Tweakable via `lwipopts.h`. Demonstrates network bring-up, DHCP/static IP, socket-style LwIP APIs, and how to host a web UI on a bare-metal Cortex-A8 with zero RTOS.
 
 ### Memory & DMA
 
-- [**`edmaTest/`**](./edmaTest/) — Enhanced DMA (EDMA3) controller demo that configures a transfer channel and a param set, kicks off a memory-to-memory copy, and verifies that the destination buffer matches the source. Demonstrates region/instance setup, PaRAM entry programming, event triggering, transfer-completion polling and the EDMA interrupt hook. Essential reference for offloading bulk data movement away from the Cortex-A8 core.
+- [**`Examples/edmaTest/`**](./Examples/edmaTest/) — Enhanced DMA (EDMA3) controller demo that configures a transfer channel and a param set, kicks off a memory-to-memory copy, and verifies that the destination buffer matches the source. Demonstrates region/instance setup, PaRAM entry programming, event triggering, transfer-completion polling and the EDMA interrupt hook. Essential reference for offloading bulk data movement away from the Cortex-A8 core.
 
 ### Storage
 
-- [**`hsMmcSdRw/`**](./hsMmcSdRw/) — High-speed MMC/SD read/write demo that initializes an SD card via the MMCSD controller, performs block-level reads and writes, and verifies the round-trip. Use it to validate SD-card bring-up and the 8-bit MMCSD data path.
+- [**`Examples/hsMmcSdRw/`**](./Examples/hsMmcSdRw/) — High-speed MMC/SD read/write demo that initializes an SD card via the MMCSD controller, performs block-level reads and writes, and verifies the round-trip. Use it to validate SD-card bring-up and the 8-bit MMCSD data path.
 
 ### Timekeeping
 
-- [**`rtcClock/`**](./rtcClock/) — Real-Time Clock demo that initializes the AM335x RTC peripheral, sets a time/date, and reads it back. _⚠️ Work in progress — currently being ported; the RTC time value refuses to be set reliably and is still under investigation._
+- [**`Examples/rtcClock/`**](./Examples/rtcClock/) — Real-Time Clock demo that initializes the AM335x RTC peripheral, sets a time/date, and reads it back. _⚠️ Work in progress — currently being ported; the RTC time value refuses to be set reliably and is still under investigation._
 
 ---
 
@@ -169,23 +169,25 @@ The only external dependency is the **StarterWare library + include path**, whic
 ```
 Workspace_12/
 ├── README.md                  ← you are here
+├── INSTALL.md
 ├── Doc/
 │   └── bg.png                 ← banner image
-├── boot/                      ← CCS project: boot
-├── demo/                      ← CCS project: demo
-├── dmtimerCounter/            ← CCS project: dmtimerCounter
-├── enetEcho/                  ← CCS project: enetEcho
-├── enetLwip/                  ← CCS project: enetLwip
-├── edmaTest/                  ← CCS project: edmaTest
-├── gpioLEDBlink/              ← CCS project: gpioLEDBlink
-├── hsMmcSdRw/                 ← CCS project: hsMmcSdRw
-├── irqPreemption/             ← CCS project: irqPreemption
-├── neonVFPBenchmark/          ← CCS project: neonVFPBenchmark
-├── rtcClock/                  ← CCS project: rtcClock (WIP)
-├── uartEcho/                  ← CCS project: uartEcho
-├── uartEcho_edma/             ← CCS project: uartEcho_edma
-├── uartEdma_Cache/            ← CCS project: uartEdma_Cache
-└── wdtReset/                  ← CCS project: wdtReset
+└── Examples/                  ← all portable CCS projects live here
+    ├── boot/                  ← CCS project: boot
+    ├── demo/                  ← CCS project: demo
+    ├── dmtimerCounter/        ← CCS project: dmtimerCounter
+    ├── edmaTest/              ← CCS project: edmaTest
+    ├── enetEcho/              ← CCS project: enetEcho
+    ├── enetLwip/              ← CCS project: enetLwip
+    ├── gpioLEDBlink/          ← CCS project: gpioLEDBlink
+    ├── hsMmcSdRw/             ← CCS project: hsMmcSdRw
+    ├── irqPreemption/         ← CCS project: irqPreemption
+    ├── neonVFPBenchmark/      ← CCS project: neonVFPBenchmark
+    ├── rtcClock/              ← CCS project: rtcClock (WIP)
+    ├── uartEcho/              ← CCS project: uartEcho
+    ├── uartEcho_edma/         ← CCS project: uartEcho_edma
+    ├── uartEdma_Cache/        ← CCS project: uartEdma_Cache
+    └── wdtReset/              ← CCS project: wdtReset
 ```
 
 ---
@@ -194,11 +196,11 @@ Workspace_12/
 
 When adding a new demo:
 
-1. Create a new folder at the root of this workspace.
+1. Create a new folder under `Examples/` at the root of this workspace.
 2. Import the StarterWare demo source into it as a standalone CCS project.
 3. Replace `linkedResources` to source files with a single library/include path pointing at `C:\ti\AM335X_StarterWare_02_00_01_01`.
 4. Verify the project builds clean and flashes to the target.
-5. Add an entry to the **Project Index** in this README.
+5. Add an entry to the **Project Index** in this README (with the `Examples/<name>/` prefix in the link).
 
 ---
 

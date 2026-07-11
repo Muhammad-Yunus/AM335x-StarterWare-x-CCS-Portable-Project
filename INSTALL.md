@@ -218,13 +218,15 @@ This is exactly what we want — the libraries are **compiled and sitting on dis
 Now import the **portable demo projects** shipped in this repository.
 
 1. **Project → Import CCS Projects...**
-2. In the *Select search-directory* field, browse to the root of this workspace, e.g.:
+2. In the *Select search-directory* field, browse to the **`Examples/`** folder inside this workspace, e.g.:
 
    ```
-   C:\D\MY\DEV\TI-CCS-IDE\Workspace_12
+   C:\D\MY\DEV\TI-CCS-IDE\Workspace_12\Examples
    ```
 
-3. CCS will scan the folder and list all the projects in this repo. Tick the ones you want to play with:
+   > 💡 You can also point at the workspace root — CCS will recurse and pick up everything under `Examples/`. Pointing directly at `Examples/` is faster and avoids any future folders (e.g. tooling, scripts) that you might add at the workspace root.
+
+3. CCS will scan the folder and list all the projects under `Examples/`. Tick the ones you want to play with:
 
    - `boot` — secondary bootloader (loads `app` from MMC/SD or XMODEM)
    - `demo` — multi-driver showcase
@@ -306,22 +308,24 @@ C:\ti\
 ├── README.md
 ├── INSTALL.md                                  ← you are here
 ├── .gitignore
-├── Doc\bg.png
-├── boot\                                       ← portable CCS project
-├── demo\
-├── dmtimerCounter\
-├── edmaTest\
-├── enetEcho\
-├── enetLwip\
-├── gpioLEDBlink\
-├── hsMmcSdRw\
-├── irqPreemption\
-├── neonVFPBenchmark\
-├── rtcClock\
-├── uartEcho\
-├── uartEcho_edma\
-├── uartEdma_Cache\
-└── wdtReset\
+├── Doc\
+│   └── bg.png                                  ← banner image
+└── Examples\                                   ← portable CCS projects
+    ├── boot\
+    ├── demo\
+    ├── dmtimerCounter\
+    ├── edmaTest\
+    ├── enetEcho\
+    ├── enetLwip\
+    ├── gpioLEDBlink\
+    ├── hsMmcSdRw\
+    ├── irqPreemption\
+    ├── neonVFPBenchmark\
+    ├── rtcClock\
+    ├── uartEcho\
+    ├── uartEcho_edma\
+    ├── uartEdma_Cache\
+    └── wdtReset\
 ```
 
 ---

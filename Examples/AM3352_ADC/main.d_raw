@@ -1,0 +1,13 @@
+main.obj: main.c
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/uart_irda_cir.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_uart_irda_cir.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/soc_AM335x.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_types.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_control_AM335x.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_cm_wkup.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/armv7a/am335x/interrupt.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_intc.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/armv7a/am335x/beaglebone.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/tsc_adc.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/hw/hw_tsc_adc_ss.h
+main.obj: C:/ti/AM335X_StarterWare_02_00_01_01/include/delay.h

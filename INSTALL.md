@@ -244,7 +244,9 @@ Now import the **portable demo projects** shipped in this repository.
    - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline
    - `AM3352_I2C_SCANNER` — I2C1 bus scanner on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz
    - `AM3352_I2C_SSD1306_LCD` — SSD1306 OLED 128×32 driver over I2C1
+   - `AM3352_ADC` — ADC AIN0 (P9_39) one-shot @ 500 ms over UART0
    - `dmtimerCounter` — DMTimer free-running counter
+   - `AM3352_PWM_LED` — eHRPWM0A on P9_22 (GPMC_AD2, MUXMODE 6) (🚧 WIP — pin not toggling yet)
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test
    - `neonVFPBenchmark` — NEON SIMD + VFPv3 floating-point benchmark
@@ -331,6 +333,8 @@ C:\ti\
     ├── AM3352_I2C_SCANNER\
     ├── AM3352_I2C_SSD1306_LCD\
     ├── AM3352_GPIO_LED_TIMER\
+    ├── AM3352_ADC\
+    ├── AM3352_PWM_LED\
     ├── boot\
     ├── demo\
     ├── dmtimerCounter\

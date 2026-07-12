@@ -93,9 +93,14 @@ Quick summary:
 - 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs.
 - 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce.
 
+### Analog
+
+- 🟧 [**`Examples/AM3352_ADC/`**](./Examples/AM3352_ADC/) — **ADC** AIN0 (P9_39) one-shot sampling. Prints `[AIN0] raw=NNNN mV=MMMM` every 500 ms over UART0.
+
 ### Timers
 
 - 🟦 [**`Examples/dmtimerCounter/`**](./Examples/dmtimerCounter/) — DMTimer in free-running counter mode, tick value printed over UART. No IRQ overhead.
+- 🟧 [**`Examples/AM3352_PWM_LED/`**](./Examples/AM3352_PWM_LED/) — **eHRPWM0A** output on P9_22 (GPMC_AD2, MUXMODE 6), ~39 kHz @ 50% duty. _🚧 WIP — pin not toggling yet; PRCM/pinmux/TBCLK path under investigation._
 - 🟦 [**`Examples/wdtReset/`**](./Examples/wdtReset/) — Enable the Watchdog and intentionally let it fire. Confirms WDT reset path works.
 
 ### Interrupt Handling
@@ -156,6 +161,8 @@ Quick summary:
 | `neonVFPBenchmark` | ✅ Stable | — |
 | `hsMmcSdRw` | ✅ Stable | — |
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
+| `AM3352_ADC` | ✅ Stable | AIN0 (P9_39) one-shot @ 500 ms over UART0 |
+| `AM3352_PWM_LED` | 🚧 WIP | eHRPWM0A on P9_22 not toggling — PRCM/pinmux under investigation |
 
 ---
 
@@ -199,6 +206,8 @@ Workspace_12/
     ├── AM3352_I2C_SCANNER/           ← I2C1 bus scanner (P9_17/P9_18)
     ├── AM3352_I2C_SSD1306_LCD/        ← SSD1306 OLED 128×32 driver (I2C1, addr 0x3C)
     ├── AM3352_GPIO_LED_TIMER/        ← blinky + polled DMTimer7 delay
+    ├── AM3352_ADC/                   ← AIN0 (P9_39) one-shot @ 500 ms over UART0
+    ├── AM3352_PWM_LED/               ← eHRPWM0A on P9_22 (🚧 WIP)
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase
     ├── dmtimerCounter/               ← DMTimer free-running counter

@@ -119,8 +119,8 @@ Quick summary:
 - 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU.
 - 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`).
 - 🟦 [**`Examples/enetEcho/`**](./Examples/enetEcho/) — CPSW Ethernet L2 echo (loop frames in-and-out). Baseline for any L2 offload work.
-- 🟦 [**`Examples/enetLwip/`**](./Examples/enetLwip/) — **LwIP TCP/IP** stack + embedded **HTTP server** (`httpd.c` + `lwipopts.h`) on top of the EMAC driver.
-- 🟧 [**`Examples/AM3352_SPI_TX/`**](./Examples/AM3352_SPI_TX/) — **SPI0 TX baseline** that transmits byte `0xAF` continuously on P9_22 (CLK) / P9_18 (MOSI) / P9_17 (CS) @ 100 kHz. DC/RST lines on P8_26 / P8_19 toggled for scope visibility.
+- 🟦 [**`Examples/enetLwip/`**](./Examples/enetLwip/) — **LwIP TCP/IP** stack + embedded **HTTP server** on top of the EMAC driver.
+- 🟧 [**`Examples/AM3352_SPI_TX/`**](./Examples/AM3352_SPI_TX/) — **SPI0 TX baseline** on P9_22 (CLK) / P9_18 (MOSI) / P9_17 (CS) @ 100 kHz.
 
 ### Memory & DMA
 

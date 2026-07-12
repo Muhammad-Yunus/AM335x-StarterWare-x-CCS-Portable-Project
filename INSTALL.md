@@ -256,6 +256,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `enetEcho` — Ethernet L2 echo
    - `enetLwip` — LwIP TCP/IP stack with HTTP server
    - `AM3352_SPI_TX` — SPI0 TX baseline: continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz
+   - `AM3352_SPI_ST7735` — ST7735 1.44" TFT LCD driver over SPI0 @ ~4 MHz
    - `edmaTest` — EDMA3 memory-to-memory copy
    - `hsMmcSdRw` — MMC/SD block read/write
    - `rtcClock` — RTC demo (🚧 WIP — currently being ported)
@@ -337,6 +338,7 @@ C:\ti\
     ├── AM3352_ADC\
     ├── AM3352_PWM_LED\
     ├── AM3352_SPI_TX\
+    ├── AM3352_SPI_ST7735\
     ├── boot\
     ├── demo\
     ├── dmtimerCounter\

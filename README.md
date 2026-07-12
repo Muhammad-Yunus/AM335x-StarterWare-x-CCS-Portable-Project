@@ -121,6 +121,7 @@ Quick summary:
 - 🟦 [**`Examples/enetEcho/`**](./Examples/enetEcho/) — CPSW Ethernet L2 echo (loop frames in-and-out). Baseline for any L2 offload work.
 - 🟦 [**`Examples/enetLwip/`**](./Examples/enetLwip/) — **LwIP TCP/IP** stack + embedded **HTTP server** on top of the EMAC driver.
 - 🟧 [**`Examples/AM3352_SPI_TX/`**](./Examples/AM3352_SPI_TX/) — **SPI0 TX baseline** on P9_22 (CLK) / P9_18 (MOSI) / P9_17 (CS) @ 100 kHz.
+- 🟧 [**`Examples/AM3352_SPI_ST7735/`**](./Examples/AM3352_SPI_ST7735/) — **ST7735 1.44" TFT LCD** (128×128 RGB565) driver over SPI0 @ ~4 MHz. Splash logo + counter/progress bar + color band demo.
 
 ### Memory & DMA
 
@@ -165,6 +166,7 @@ Quick summary:
 | `AM3352_ADC` | ✅ Stable | AIN0 (P9_39) one-shot @ 500 ms over UART0 |
 | `AM3352_PWM_LED` | 🚧 WIP | eHRPWM0A on P9_22 not toggling |
 | `AM3352_SPI_TX` | ✅ Stable | SPI0 continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz |
+| `AM3352_SPI_ST7735` | ✅ Stable | ST7735 1.44" LCD demo via SPI0 @ ~4 MHz |
 
 ---
 
@@ -211,6 +213,7 @@ Workspace_12/
     ├── AM3352_ADC/                   ← AIN0 (P9_39) one-shot @ 500 ms over UART0
     ├── AM3352_PWM_LED/               ← eHRPWM0A on P9_22 (🚧 WIP)
     ├── AM3352_SPI_TX/                ← SPI0 TX baseline (0xAF loop @ 100 kHz)
+    ├── AM3352_SPI_ST7735/            ← ST7735 1.44" LCD driver (SPI0 @ ~4 MHz)
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase
     ├── dmtimerCounter/               ← DMTimer free-running counter

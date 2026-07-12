@@ -255,6 +255,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `uartEdma_Cache` — UART + EDMA + L1/L2 cache coherency combo
    - `enetEcho` — Ethernet L2 echo
    - `enetLwip` — LwIP TCP/IP stack with HTTP server
+   - `AM3352_SPI_TX` — SPI0 TX baseline: continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz
    - `edmaTest` — EDMA3 memory-to-memory copy
    - `hsMmcSdRw` — MMC/SD block read/write
    - `rtcClock` — RTC demo (🚧 WIP — currently being ported)
@@ -335,6 +336,7 @@ C:\ti\
     ├── AM3352_GPIO_LED_TIMER\
     ├── AM3352_ADC\
     ├── AM3352_PWM_LED\
+    ├── AM3352_SPI_TX\
     ├── boot\
     ├── demo\
     ├── dmtimerCounter\

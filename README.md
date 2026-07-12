@@ -120,6 +120,7 @@ Quick summary:
 - 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`).
 - 🟦 [**`Examples/enetEcho/`**](./Examples/enetEcho/) — CPSW Ethernet L2 echo (loop frames in-and-out). Baseline for any L2 offload work.
 - 🟦 [**`Examples/enetLwip/`**](./Examples/enetLwip/) — **LwIP TCP/IP** stack + embedded **HTTP server** (`httpd.c` + `lwipopts.h`) on top of the EMAC driver.
+- 🟧 [**`Examples/AM3352_SPI_TX/`**](./Examples/AM3352_SPI_TX/) — **SPI0 TX baseline** that transmits byte `0xAF` continuously on P9_22 (CLK) / P9_18 (MOSI) / P9_17 (CS) @ 100 kHz. DC/RST lines on P8_26 / P8_19 toggled for scope visibility.
 
 ### Memory & DMA
 
@@ -163,6 +164,7 @@ Quick summary:
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
 | `AM3352_ADC` | ✅ Stable | AIN0 (P9_39) one-shot @ 500 ms over UART0 |
 | `AM3352_PWM_LED` | 🚧 WIP | eHRPWM0A on P9_22 not toggling |
+| `AM3352_SPI_TX` | ✅ Stable | SPI0 continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz |
 
 ---
 
@@ -208,6 +210,7 @@ Workspace_12/
     ├── AM3352_GPIO_LED_TIMER/        ← blinky + polled DMTimer7 delay
     ├── AM3352_ADC/                   ← AIN0 (P9_39) one-shot @ 500 ms over UART0
     ├── AM3352_PWM_LED/               ← eHRPWM0A on P9_22 (🚧 WIP)
+    ├── AM3352_SPI_TX/                ← SPI0 TX baseline (0xAF loop @ 100 kHz)
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase
     ├── dmtimerCounter/               ← DMTimer free-running counter

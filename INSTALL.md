@@ -237,13 +237,13 @@ Now import the **portable demo projects** shipped in this repository.
    - `boot` — secondary bootloader (loads `app` from MMC/SD or XMODEM)
    - `demo` — multi-driver showcase
    - `gpioLEDBlink` — GPIO blinky *(StarterWare reference)*
-   - `AM3352_GPIO_LED` — minimal busy-wait blinky *(custom-built from empty CCS project, references StarterWare libraries)*
-   - `AM3352_GPIO_LED_DELAY` — blinky with IRQ-based `delay()` *(custom-built, StarterWare ref)*
-   - `AM3352_GPIO_LED_TIMER` — blinky with polled DMTimer7 *(custom-built, StarterWare ref)*
-   - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation *(custom-built, StarterWare ref)*
-   - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline *(custom-built, StarterWare ref)*
-   - `AM3352_I2C_SCANNER` — I2C1 bus scanner on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz, prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0 ⚠️ needs 10 kΩ external pull-ups *(custom-built, StarterWare ref)*
-   - `AM3352_I2C_SSD1306_LCD` — SSD1306 OLED 128×32 driver over I2C1 (addr 0x3C, same SCL/SDA as the scanner), shapes + counter tour demo ⚠️ needs 10 kΩ external pull-ups *(custom-built, StarterWare ref)*
+   - `AM3352_GPIO_LED` — minimal busy-wait blinky
+   - `AM3352_GPIO_LED_DELAY` — blinky with IRQ-based `delay()`
+   - `AM3352_GPIO_LED_TIMER` — blinky with polled DMTimer7
+   - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation
+   - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline
+   - `AM3352_I2C_SCANNER` — I2C1 bus scanner on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz, prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0
+   - `AM3352_I2C_SSD1306_LCD` — SSD1306 OLED 128×32 driver over I2C1 (addr 0x3C, same SCL/SDA as the scanner), shapes + counter tour demo
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test

@@ -90,7 +90,7 @@ Quick summary:
 - 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay.
 - 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7.
 - 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ).
-- 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]).
+- 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs.
 - 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce.
 
 ### Timers
@@ -100,7 +100,7 @@ Quick summary:
 
 ### Interrupt Handling
 
-- 🟦 [**`Examples/irqPreemption/`**](./Examples/irqPreemption/) — Nested/pre-empting IRQs on the Cortex-A8 GIC. Two sources of differing priority; high-priority IRQs preempts low.
+- 🟦 [**`Examples/irqPreemption/`**](./Examples/irqPreemption/) — Nested/pre-empting IRQs on the Cortex-A8 GIC.
 
 ### Performance / SIMD
 

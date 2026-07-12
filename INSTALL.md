@@ -243,7 +243,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `AM3352_GPIO_LED_SEQUENCE` — 4-LED running-light animation
    - `AM3352_GPIO_INTERRUPT` — GPIO input interrupt on P9_12 (GPIO1[28]) + UART0 echo baseline
    - `AM3352_I2C_SCANNER` — I2C1 bus scanner on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz
-   - `AM3352_I2C_SSD1306_LCD` — SSD1306 OLED 128×32 driver over I2C1 (addr 0x3C, same SCL/SDA as the scanner)
+   - `AM3352_I2C_SSD1306_LCD` — SSD1306 OLED 128×32 driver over I2C1
    - `dmtimerCounter` — DMTimer free-running counter
    - `wdtReset` — watchdog timer reset demo
    - `irqPreemption` — Cortex-A8 GIC IRQ preemption / nested-interrupt test

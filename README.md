@@ -86,11 +86,11 @@ Quick summary:
 
 ### GPIO
 
-- 🟦 [**`Examples/gpioLEDBlink/`**](./Examples/gpioLEDBlink/) — Toggle a user LED at fixed intervals via GPIO1[23]. StarterWare's classic "is the toolchain alive?" blinky.
-- 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay. No IRQ, no timer — pure pin-mux + GPIO.
+- 🟦 [**`Examples/gpioLEDBlink/`**](./Examples/gpioLEDBlink/) — Toggle a user LED at fixed intervals via GPIO1[23].
+- 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay.
 - 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7.
 - 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ).
-- 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]). Step rate controlled by `STEP_PERIOD_MS`.
+- 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]).
 - 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce.
 
 ### Timers
@@ -109,7 +109,7 @@ Quick summary:
 ### Communication
 
 - 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz.
-- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1 (same SCL/SDA as the scanner, addr `0x3C`).
+- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1.
 - 🟦 [**`Examples/uartEcho/`**](./Examples/uartEcho/) — UART interrupt-driven echo. Pin-mux + FIFO + ISR skeleton for serial protocols.
 - 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU.
 - 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`).
@@ -122,7 +122,7 @@ Quick summary:
 
 ### Storage
 
-- 🟦 [**`Examples/hsMmcSdRw/`**](./Examples/hsMmcSdRw/) — MMC/SD block read/write via the MMCSD controller. Validates SD bring-up and the 8-bit data path.
+- 🟦 [**`Examples/hsMmcSdRw/`**](./Examples/hsMmcSdRw/) — MMC/SD block read/write via the MMCSD controller.
 
 ### Timekeeping
 

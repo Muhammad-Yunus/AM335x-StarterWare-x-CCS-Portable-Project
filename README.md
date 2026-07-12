@@ -100,7 +100,7 @@ Quick summary:
 ### Timers
 
 - 🟦 [**`Examples/dmtimerCounter/`**](./Examples/dmtimerCounter/) — DMTimer in free-running counter mode, tick value printed over UART. No IRQ overhead.
-- 🟧 [**`Examples/AM3352_PWM_LED/`**](./Examples/AM3352_PWM_LED/) — **eHRPWM0A** output on P9_22 (GPMC_AD2, MUXMODE 6), ~39 kHz @ 50% duty. _🚧 WIP — pin not toggling yet; PRCM/pinmux/TBCLK path under investigation._
+- 🟧 [**`Examples/AM3352_PWM_LED/`**](./Examples/AM3352_PWM_LED/) — **eHRPWM0A** output on P9_22 (GPMC_AD2, MUXMODE 6), ~39 kHz @ 50% duty. _🚧 WIP — pin not toggling yet._
 - 🟦 [**`Examples/wdtReset/`**](./Examples/wdtReset/) — Enable the Watchdog and intentionally let it fire. Confirms WDT reset path works.
 
 ### Interrupt Handling
@@ -162,7 +162,7 @@ Quick summary:
 | `hsMmcSdRw` | ✅ Stable | — |
 | `rtcClock` | 🚧 WIP | RTC time-set failing — porting in progress |
 | `AM3352_ADC` | ✅ Stable | AIN0 (P9_39) one-shot @ 500 ms over UART0 |
-| `AM3352_PWM_LED` | 🚧 WIP | eHRPWM0A on P9_22 not toggling — PRCM/pinmux under investigation |
+| `AM3352_PWM_LED` | 🚧 WIP | eHRPWM0A on P9_22 not toggling |
 
 ---
 

@@ -88,10 +88,10 @@ Quick summary:
 
 - 🟦 [**`Examples/gpioLEDBlink/`**](./Examples/gpioLEDBlink/) — Toggle a user LED at fixed intervals via GPIO1[23]. StarterWare's classic "is the toolchain alive?" blinky.
 - 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay. No IRQ, no timer — pure pin-mux + GPIO.
-- 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7. Adds `IntAINTCInit()` + `IntMasterIRQEnable()` to the startup path.
-- 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ). Same loop, different tick source — isolates GPIO from interrupt wiring.
+- 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7.
+- 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ).
 - 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]). Step rate controlled by `STEP_PERIOD_MS`.
-- 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce. ISR sets a flag; main loop prints `"GPIO60 interrupt N"` on UART0.
+- 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce.
 
 ### Timers
 
@@ -104,21 +104,21 @@ Quick summary:
 
 ### Performance / SIMD
 
-- 🟦 [**`Examples/neonVFPBenchmark/`**](./Examples/neonVFPBenchmark/) — Cortex-A8 **NEON SIMD** + **VFPv3** benchmark. Prints cycle counts for vector add/mul/dot-product and scalar baselines over UART.
+- 🟦 [**`Examples/neonVFPBenchmark/`**](./Examples/neonVFPBenchmark/) — Cortex-A8 **NEON SIMD** + **VFPv3** benchmark.
 
 ### Communication
 
-- 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz. Probes addresses 0x03–0x77 and prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0.
-- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1 (same SCL/SDA as the scanner, addr `0x3C`). Demo, with UART0 status logs.
+- 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz.
+- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1 (same SCL/SDA as the scanner, addr `0x3C`).
 - 🟦 [**`Examples/uartEcho/`**](./Examples/uartEcho/) — UART interrupt-driven echo. Pin-mux + FIFO + ISR skeleton for serial protocols.
-- 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU. UART-triggered events, PaRAM linking, CPU stays out of the byte loop.
-- 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`). The DM​A/cache pitfall reference.
+- 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU.
+- 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`).
 - 🟦 [**`Examples/enetEcho/`**](./Examples/enetEcho/) — CPSW Ethernet L2 echo (loop frames in-and-out). Baseline for any L2 offload work.
 - 🟦 [**`Examples/enetLwip/`**](./Examples/enetLwip/) — **LwIP TCP/IP** stack + embedded **HTTP server** (`httpd.c` + `lwipopts.h`) on top of the EMAC driver.
 
 ### Memory & DMA
 
-- 🟦 [**`Examples/edmaTest/`**](./Examples/edmaTest/) — **EDMA3** memory-to-memory copy. Region setup, PaRAM entry, event trigger, completion poll.
+- 🟦 [**`Examples/edmaTest/`**](./Examples/edmaTest/) — **EDMA3** memory-to-memory copy.
 
 ### Storage
 

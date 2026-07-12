@@ -87,11 +87,11 @@ Quick summary:
 ### GPIO
 
 - 🟦 [**`Examples/gpioLEDBlink/`**](./Examples/gpioLEDBlink/) — Toggle a user LED at fixed intervals via GPIO1[23]. StarterWare's classic "is the toolchain alive?" blinky.
-- 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay. No IRQ, no timer — pure pin-mux + GPIO. The simplest possible StarterWare program on the AM3352.
+- 🟧 [**`Examples/AM3352_GPIO_LED/`**](./Examples/AM3352_GPIO_LED/) — Minimal GPIO1[23] blinky with a hand-rolled busy-wait delay. No IRQ, no timer — pure pin-mux + GPIO.
 - 🟧 [**`Examples/AM3352_GPIO_LED_DELAY/`**](./Examples/AM3352_GPIO_LED_DELAY/) — Same blinky, but the delay uses StarterWare's **IRQ-based `delay()` / `Sysdelay()`** via DMTimer7. Adds `IntAINTCInit()` + `IntMasterIRQEnable()` to the startup path.
 - 🟧 [**`Examples/AM3352_GPIO_LED_TIMER/`**](./Examples/AM3352_GPIO_LED_TIMER/) — Same blinky, but delay uses **polled DMTimer7** (no IRQ). Same loop, different tick source — isolates GPIO from interrupt wiring.
 - 🟧 [**`Examples/AM3352_GPIO_LED_SEQUENCE/`**](./Examples/AM3352_GPIO_LED_SEQUENCE/) — **Running-light** animation across the 4 onboard LEDs (D2/D3/D4/D5 = GPIO1[21..24]). Step rate controlled by `STEP_PERIOD_MS`.
-- 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce. ISR sets a flag; main loop prints `"GPIO60 interrupt N"` on UART0. Boot path also includes a UART0 echo baseline (115200 8N1) for SoC bring-up.
+- 🟧 [**`Examples/AM3352_GPIO_INTERRUPT/`**](./Examples/AM3352_GPIO_INTERRUPT/) — **GPIO input interrupt** on P9_12 (GPIO1[28] / global GPIO60), rising-edge trigger with debounce. ISR sets a flag; main loop prints `"GPIO60 interrupt N"` on UART0.
 
 ### Timers
 
@@ -108,8 +108,8 @@ Quick summary:
 
 ### Communication
 
-- 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz. Probes addresses 0x03–0x77 and prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0. Polled only, no ISR-driven I2C.
-- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1 (same SCL/SDA as the scanner, addr `0x3C`). Demo: shapes + counter tour, with UART0 status logs.
+- 🟧 [**`Examples/AM3352_I2C_SCANNER/`**](./Examples/AM3352_I2C_SCANNER/) — **I2C1 bus scanner** on P9_17 (SCL) / P9_18 (SDA) @ 100 kHz. Probes addresses 0x03–0x77 and prints a 16×16 grid (à la Linux `i2cdetect -y 1`) over UART0.
+- 🟧 [**`Examples/AM3352_I2C_SSD1306_LCD/`**](./Examples/AM3352_I2C_SSD1306_LCD/) — **SSD1306 OLED 128×32** display driver over I2C1 (same SCL/SDA as the scanner, addr `0x3C`). Demo, with UART0 status logs.
 - 🟦 [**`Examples/uartEcho/`**](./Examples/uartEcho/) — UART interrupt-driven echo. Pin-mux + FIFO + ISR skeleton for serial protocols.
 - 🟦 [**`Examples/uartEcho_edma/`**](./Examples/uartEcho_edma/) — UART echo driven by **EDMA3** instead of the CPU. UART-triggered events, PaRAM linking, CPU stays out of the byte loop.
 - 🟦 [**`Examples/uartEdma_Cache/`**](./Examples/uartEdma_Cache/) — UART + EDMA + **L1/L2 cache coherency** (`CacheDataClean`/`Invalidate`). The DM​A/cache pitfall reference.
@@ -142,8 +142,8 @@ Quick summary:
 | `AM3352_GPIO_LED_TIMER` | ✅ Stable | — |
 | `AM3352_GPIO_LED_SEQUENCE` | ✅ Stable | — |
 | `AM3352_GPIO_INTERRUPT` | ✅ Stable | GPIO input interrupt on P9_12 + UART0 echo |
-| `AM3352_I2C_SCANNER` | ✅ Stable | I2C1 bus scanner (P9_17/P9_18) @ 100 kHz, output grid `i2cdetect`-style |
-| `AM3352_I2C_SSD1306_LCD` | ✅ Stable | SSD1306 OLED 128×32 driver over I2C1 (addr 0x3C), shapes + counter tour |
+| `AM3352_I2C_SCANNER` | ✅ Stable | I2C1 bus scanner (P9_17/P9_18) @ 100 kHz |
+| `AM3352_I2C_SSD1306_LCD` | ✅ Stable | SSD1306 OLED 128×32 driver over I2C1 (addr 0x3C) |
 | `dmtimerCounter` | ✅ Stable | — |
 | `wdtReset` | ✅ Stable | — |
 | `irqPreemption` | ✅ Stable | — |
@@ -215,25 +215,6 @@ Workspace_12/
     ├── uartEdma_Cache/               ← UART + EDMA + cache coherency
     └── wdtReset/                     ← watchdog reset demo
 ```
-
----
-
-## Contributing
-
-When adding a new demo, decide which kind it is — the badge in the **Project Index** reflects this:
-
-**🟦 StarterWare ref project** (porting an existing StarterWare demo)
-1. Copy the relevant `examples/<board>/<demo>/` source from `C:\ti\AM335X_StarterWare_02_00_01_01` into a new folder under `Examples/`.
-2. Convert it to a standalone CCS project (no `linkedResources` into the StarterWare tree); point the project at `C:\ti\AM335X_StarterWare_02_00_01_01` for includes + `.lib` files.
-3. Verify the project builds clean and flashes to the target.
-4. Add an entry to the **Project Index** with the 🟦 badge.
-
-**🟧 Custom project built from empty** (writing your own example, but reusing StarterWare drivers)
-1. In CCS: **File → New → CCS Project**, pick the empty C project template, save it under a new folder in `Examples/`.
-2. Set the build variables to point at `C:\ti\AM335X_StarterWare_02_00_01_01` for includes + `.lib` files.
-3. Hand-write `main.c` (or whatever you need) — application source is yours, drivers come from StarterWare.
-4. Verify the project builds clean and flashes to the target.
-5. Add an entry to the **Project Index** with the 🟧 badge.
 
 ---
 

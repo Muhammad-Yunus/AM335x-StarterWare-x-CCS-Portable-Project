@@ -258,6 +258,7 @@ Now import the **portable demo projects** shipped in this repository.
    - `AM3352_SPI_TX` — SPI0 TX baseline: continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz
    - `AM3352_SPI_ST7735` — ST7735 1.44" TFT LCD driver over SPI0 @ ~4 MHz
    - `AM3352_SPI_ILI9341` — ILI9341 2.8" TFT LCD driver over SPI0 @ ~10 MHz
+   - `AM3352_SPI_ILI9341_LVGL` — ILI9341 2.8" TFT LCD + LVGL v9 graphics library over SPI0 @ 24 MHz + EDMA3
    - `edmaTest` — EDMA3 memory-to-memory copy
    - `hsMmcSdRw` — MMC/SD block read/write
    - `rtcClock` — RTC demo (🚧 WIP — currently being ported)
@@ -341,6 +342,7 @@ C:\ti\
     ├── AM3352_SPI_TX\
     ├── AM3352_SPI_ST7735\
     ├── AM3352_SPI_ILI9341\
+    ├── AM3352_SPI_ILI9341_LVGL\
     ├── boot\
     ├── demo\
     ├── dmtimerCounter\

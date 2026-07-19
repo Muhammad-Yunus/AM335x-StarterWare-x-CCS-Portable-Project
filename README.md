@@ -123,6 +123,7 @@ Quick summary:
 - 🟧 [**`Examples/AM3352_SPI_TX/`**](./Examples/AM3352_SPI_TX/) — **SPI0 TX baseline** on P9_22 (CLK) / P9_18 (MOSI) / P9_17 (CS) @ 100 kHz.
 - 🟧 [**`Examples/AM3352_SPI_ST7735/`**](./Examples/AM3352_SPI_ST7735/) — **ST7735 1.44" TFT LCD** (128×128 RGB565) driver over SPI0 @ ~4 MHz.
 - 🟧 [**`Examples/AM3352_SPI_ILI9341/`**](./Examples/AM3352_SPI_ILI9341/) — **ILI9341 2.8" TFT LCD** driver over SPI0 @ ~10 MHz with primitives (fill, rect, line, circle, 5×7 text).
+- 🟧 [**`Examples/AM3352_SPI_ILI9341_LVGL/`**](./Examples/AM3352_SPI_ILI9341_LVGL/) — **ILI9341 2.8" TFT LCD** + **LVGL v9** graphics library over SPI0 @ 24 MHz + EDMA3, running the LVGL Music Demo.
 
 ### Memory & DMA
 
@@ -169,6 +170,7 @@ Quick summary:
 | `AM3352_SPI_TX` | ✅ Stable | SPI0 continuous `0xAF` on P9_22/P9_18/P9_17 @ 100 kHz |
 | `AM3352_SPI_ST7735` | ✅ Stable | ST7735 1.44" LCD demo via SPI0 @ ~4 MHz |
 | `AM3352_SPI_ILI9341` | ✅ Stable | ILI9341 2.8" LCD driver + primitives via SPI0 @ ~10 MHz |
+| `AM3352_SPI_ILI9341_LVGL` | ✅ Stable | ILI9341 2.8" LCD + LVGL v9 + EDMA3 via SPI0 @ 24 MHz, LVGL Music Demo |
 
 ---
 
@@ -217,6 +219,7 @@ Workspace_12/
     ├── AM3352_SPI_TX/                ← SPI0 TX baseline (0xAF loop @ 100 kHz)
     ├── AM3352_SPI_ST7735/            ← ST7735 1.44" LCD driver (SPI0 @ ~4 MHz)
     ├── AM3352_SPI_ILI9341/          ← ILI9341 2.8" LCD driver (SPI0 @ ~10 MHz)
+    ├── AM3352_SPI_ILI9341_LVGL/     ← ILI9341 2.8" LCD + LVGL v9 (SPI0 @ 24 MHz + EDMA3)
     ├── boot/                         ← secondary bootloader (SD/XMODEM)
     ├── demo/                         ← multi-driver showcase
     ├── dmtimerCounter/               ← DMTimer free-running counter
